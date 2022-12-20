@@ -18,8 +18,8 @@ let camera;
 let course;
 export const origin = new THREE.Vector3();
 export const controlPoints = [
-    [-50, 20]
-    [ 25,-40],
+    [-50, 20],
+    [ 25,-40]
 ]
 export function init(scene, size, id, offset, texture) {
     origin.set(offset.x, 0, offset.z);
