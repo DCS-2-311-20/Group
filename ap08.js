@@ -1,15 +1,15 @@
 //
-// 応用プログラミング 第12回 (ap12.js)
+// 応用プログラミング 第8回 (ap08.js)
 //
 "use strict"; // 厳格モード
 
 // ライブラリをモジュールとして読み込む
 import * as THREE from "three";
-import { GLTFLoader } from "gltf";
-import * as L1 from "./ap12L1.js";
-import * as L2 from "./ap12L2.js";
-import * as L3 from "./ap12L3.js";
-import * as L4 from "./ap12L4.js";
+import { GLTFLoader } from "three/addons";
+import * as L1 from "./ap08L1.js";
+import * as L2 from "./ap08L2.js";
+import * as L3 from "./ap08L3.js";
+import * as L4 from "./ap08L4.js";
 
 // ３Ｄページ作成関数の定義
 function init() {
@@ -86,11 +86,11 @@ function init() {
   // 光源の設定
   { // 環境ライト
     const light = new THREE.AmbientLight();
-    light.intensity=0.4;
+    light.intensity=1.5;
     scene.add(light);
   }
   { // ポイントライト
-    const light = new THREE.PointLight();
+    const light = new THREE.PointLight(0xffffff, 5000);
     light.position.set(0, 50, 0);
     scene.add(light);
   }
@@ -99,7 +99,11 @@ function init() {
     mainCamera.updateProjectionMatrix();
     sizeR = 0.8 * window.innerWidth;
     mainRenderer.setSize(sizeR, sizeR);
+    parts.forEach((part) => {
+      part.module.resize();
+    });
   }, false);
+
   // 各セクションをクリックしたときにメイン表示のカメラを切り替える
   let camera = mainCamera;
   parts.forEach((part) => {
