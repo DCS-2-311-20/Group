@@ -1,7 +1,7 @@
 //
 // 応用プログラミング 第8回 (ap08L1.js)
 //
-// G18400-2021 拓殖太郎
+// G48400-2024 拓殖太郎
 //
 
 "use strict"; // 厳格モード
@@ -71,6 +71,7 @@ export function resize() {
     renderer.setSize(sizeR, sizeR);
 }
 
+// 描画処理
 export function render(scene, car) {
     camera.lookAt(car.position.x, car.position.y, car.position.z);
     renderer.render(scene, camera);
